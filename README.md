@@ -63,7 +63,7 @@ Line 90 becomes:
 ```sh
 <form action="/cmsrename/logging" method="post">
 ```
-Once installed browse to `https://<SERVER URL>/cmsrename/index.html`. Scroll down to **Credentials for this web app**. Enter the username and password the IIS server will use to send its REST API space name change request. You will get a new page with the encrypted password. Paste this into the **private/creds.csv** spread sheet. In the same sheet review and change the other headings for you enviroment.
+Once installed browse to `https://<SERVER URL>/cmsrename/index.html`. Scroll down to **Credentials for this web app**. Enter the username and password the IIS server will use to send its REST API space name change request. You will get a new page with the encrypted password. Paste this into the **private/creds.csv** spread sheet. In the same sheet review and change the other headings for you enviroment. PLease make sure this username exists on your CMS server.
 
 ## Usage
 
