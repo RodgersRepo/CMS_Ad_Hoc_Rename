@@ -2,12 +2,11 @@
 
 A dot net core minimal api application to change Ad hoc conference names on a Cisco Meeting Server (CMS). For deployments where CUCM (Cisco Unified Communications Manager) creates the conference on CMS.
 
-### Scripts
+if you are using CMS for your ad hoc CUCM conferences you have probably seen touch devices such as the Navigator displaying the name of the conference as a numeric string. Figure 1 below demonstartes this.
 
-**CucmActiveCalls.ps1** - Script that creates a real time season to each CUCM subscriber, then displays the active calls. For more information about the Performance Monitor API (which this script accesses), Google the term **cucm perfmon api devnet**.
-Change lines 72 to 75 in the script to the IP addresses for up to four CUCM servers executing the Call Manager service.
+![Figure 1 - Touch Device Ad Hoc screen shot](/./AdHocScreenShot.png "CUCM Active calls script screenshot")
 
-![Figure 1 - CUCM Active calls script screen shot](/./CUCMCallMonScreeShot.png "CUCM Active calls script screenshot")
+This web application will change that string to a string of your choosing. It requires a seperate microsoft IIS server to host the apllication. If you are already using IIS to host the [CMS branding files](https://www.cisco.com/c/dam/en/us/td/docs/conferencing/ciscoMeetingServer/Customisation/Version-3-5/Cisco-Meeting-Server-3-5-Customization-Guidelines.pdf) files this could be used.
 
 ## Installation
 ### To VSCODE
