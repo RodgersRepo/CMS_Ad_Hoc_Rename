@@ -53,7 +53,7 @@ Download and install .NET Core bundle onto the IIS target server that you intend
 - Provide a Site alias and set the Physical path to the app's deployment folder that you created. Keep the Application Pool at the default (best practise is to have a seperate pool per application, see below for this). Create the application by selecting **OK**.
   
 Copy the files from the **publish** folder on your development computer to the IIS server application folder. Test by browsing to `HTTP://<your server URL/cmsrename`.
-To secure the site form the IIS manager, click your application name **cmsrenmae** then double click `SSL Settings`, set for your enviroment. For testing I selected **Require** and **ingor**. You will need to have certificates already set up on the IIS server for this to work.
+To secure the site from the IIS manager, click your application name **cmsrenmae** then double click `SSL Settings`, set for your enviroment. For testing I selected **Require** and **ingor**. You will need to have certificates already set up on the IIS server for this to work.
 
 PLEASE NOTE: You will have to amend the **index.html** file once it has been deployed to IIS. The routing will be wrong. Change lines 72 and 90 to include the application name `cmsrename`. Line 72 becomes:
 ```sh
