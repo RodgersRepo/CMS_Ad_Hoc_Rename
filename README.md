@@ -2,11 +2,13 @@
 
 A dot net core minimal api application to change Ad hoc conference names on a Cisco Meeting Server (CMS). For deployments where CUCM (Cisco Unified Communications Manager) creates the conference on CMS.
 
-if you are using CMS for your ad hoc CUCM conferences you have probably seen touch devices such as the Navigator displaying the name of the conference as a numeric string. Figure 1 below demonstartes this.
+if you are using CMS for your ad hoc CUCM conferences you have probably seen touch devices such as the Navigator displaying the name of the conference as a numeric string. Figure 1 below demonstrates this.
 
 ![Figure 1 - Touch Device Ad Hoc screen shot](/./AdHocScreenShot.png "CUCM Active calls script screenshot")
 
 This web application will change that string to a string of your choosing. It requires a seperate microsoft IIS server to host the apllication. If you are already using IIS to host the [CMS branding files](https://www.cisco.com/c/dam/en/us/td/docs/conferencing/ciscoMeetingServer/Customisation/Version-3-5/Cisco-Meeting-Server-3-5-Customization-Guidelines.pdf) files this could be used.
+
+The solution was tested in a lab enviroment connected as paer the diagram below. Whenever a ad hoc conference is requested the CMS server immeadeatly sends the call detail record to the IIS server. The server detcts this and returns a REST responces to alter the ad hoc space name. To get this to work please read the installation section and replace the defaults in the **Private/creds.csv** file with values of your chosing. A secure password can also be used, see installation for this also. 
 
 ## Installation
 ### To VSCODE
@@ -57,6 +59,7 @@ Line 90 becomes:
 ```sh
 <form action="/cmsrename/logging" method="post">
 ```
+Once installed browse to `https://<SERVER URL>/cmsrename/index.html`. Scroll down to **Credentials for this web app**. Enter the username and password the IIS server will use to send its REST API space name change request. You will get a new page with the encrypted password. Paste this into the **private/creds.csv** spread sheet. In the same sheet review and change the other headings for you enviroment.
 
 ## Usage
 
