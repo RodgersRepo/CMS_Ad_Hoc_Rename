@@ -1,4 +1,4 @@
-# CMS Ad hoc renmae
+# CMS Ad hoc rename
 
 A dot net core minimal api application to change Ad hoc conference names on a Cisco Meeting Server (CMS). For deployments where CUCM (Cisco Unified Communications Manager) creates the conference on CMS.
 
@@ -10,28 +10,84 @@ Change lines 72 to 75 in the script to the IP addresses for up to four CUCM serv
 ![Figure 1 - CUCM Active calls script screen shot](/./CUCMCallMonScreeShot.png "CUCM Active calls script screenshot")
 
 ## Installation
+### To VSCODE
+Clone the Repository:
 
-Click on the link for the script above. When the PowerShell code page appears click the **Download Raw file** button top right. Once downloaded to your computer have a read of the script in your prefered editor. All the information for executing the script will be in the script synopsis.
-The developement system this script was tested on used self signed CUCM certificates. To stop certificate errors, a Dot NET core class is used within the PowserShell script to overcome this error. This means you will need Dot NET installed on your target PC, or use signed certificates.
-If you decide to use signed certificates comment out lines 78 to 94 of the PowerShell script, then change the CUCM IP addresses for fully quailified domain names.
+Open a terminal or command prompt.
+Navigate to the directory where you want to clone the repository.
+Use the git clone command followed by the repository URL. For example:
+```sh
+git clone https://github.com/username/repository.git
+```
+Open the Project in Visual Studio Code:
+
+Open Visual Studio Code.
+Use the **File > Open Folder** menu option and select the folder where you cloned the repository.
+Alternatively, you can open the terminal in VS Code and navigate to the cloned directory, then type:
+```sh
+code .
+```
+This application uses the directive **Serilog** to provide log messages to a file. You will need to add this to the project. From VSCODE terminal type:
+```sh
+dotnet add package Serilog
+dotnet add package Serilog.Sinks.File
+```
+
+### To Microsoft Internet Information Services (IIS)
+I deployed this to IIS as an application called **cmsrename** not a web site. Open the project in VSCODE. Open the command line interface **View > Terminal**, then type:
+```sh
+dotnet publish -c Release -o ./publish
+```
+This will compile the project to a folder named **project** on your development computer. 
+Download and install .NET Core bundle onto the IIS target server that you intend to deploy this app to from Microsoft.
+
+- Run the installer on the IIS server
+- Restart the server or execute `net stop was /y` followed by `net start w3svc`
+- On the IIS server, create a folder to contain the app's published folders and files called **cmsrename**. In a following step, the folder's path is provided to IIS as the physical path to the application. For more information on an app's deployment folder and file layout, see ASP.NET Core directory structure.
+- In IIS Manager, open the server's node in the Connections panel. Right-click the **Sites/default web site** folder. Select **Add Application** from the contextual menu.
+- Provide a Site alias and set the Physical path to the app's deployment folder that you created. Keep the Application Pool at the default (best practise is to have a seperate pool per application, see below for this). Create the application by selecting **OK**.
+  
+Copy the files from the **publish** folder on your development computer to the IIS server application folder. Test by browsing to `HTTP://<your server URL/cmsrename`.
+To secure the site form the IIS manager, click your application name **cmsrenmae** then double click `SSL Settings`, set for your enviroment. For testing I selected **Require** and **ingor**. You will need to have certificates already set up on the IIS server for this to work.
+
+PLEASE NOTE: You will have to amend the **index.html** file once it has been deployed to IIS. The routing will be wrong. Change lines 72 and 90 to include the application name `cmsrename`. Line 72 becomes:
+```sh
+<form action="/cmsrename/creds" method="post">
+```
+Line 90 becomes:
+```sh
+<form action="/cmsrename/logging" method="post">
+```
 
 ## Usage
 
-To execute the PowerShell scripts in this repository. Save the ps1 file to a folder on your computer, then from a powershell prompt in the same folder.
-```sh
-Run .\scriptname.ps1 
-```
-Change `scriptname.ps1` for the name of the script above.
+### Configuring CUCM for this web app
 
-If your Windows enviroment permits, you could create a shortcut to the script. Paste the following line into the shortcut.
+Configure a CUCM to CMS Ad hoc conference bridge using the Cisco document
+[Configure Cisco Meeting Server and CUCM Ad hoc Conferences](https://www.cisco.com/c/en/us/support/docs/conferencing/meeting-server/213820-configure-cisco-meeting-server-and-cucm.html)
+
+Log into CUCM administration, navigate to **Media Resources > Conference Bridge**. Click the hyperlink for the name you have configured for Ad hoc conferencing. In the Conference Bridge Prefix text box type the text string that will uniquely identify Ad hoc conferences. For example I have used **123456**. Click **Save** then **Apply Config**.
+
+### Configuring CMS to use this web app
+
+Log into your CMS server, then navigate to **Configuration > CDR settings**. In one of the Receiver URI text boxes type the following followed by **Submit**.
 ```sh
-powershell.exe -WindowStyle Hidden -ExecutionPolicy Bypass -File "C:\<PathToYourScripts>\scriptname.ps1"
+https://<SERVER URL>/cmsrename
 ```
-Then just double click the shortcut like you are starting an application. Check the correct path to the  powershell executable on your system.
+cmsrename will only use https so please ensure your certificates are valid.
+
+## Caveats
+This application has only been tested in a lab enviroment with a single CUCM publisher and a single CMS.
 
 ## Credits and references
 
-#### [AXL API with SOAPUI and Powershell](https://www.youtube.com/watch?v=tb9hINfg2nY&list=LL&index=10&t=421s)
-A really great guide about how to get started sending AXL requests. Totaly recomend this video.
+#### [Configure Cisco Meeting Server and CUCM Ad hoc Conferences](https://www.cisco.com/c/en/us/support/docs/conferencing/meeting-server/213820-configure-cisco-meeting-server-and-cucm.html)
+Guide to configuring CMS ad hoc conferences for CUCM.
+#### [Configure Cisco Meeting Server call detail records](https://www.cisco.com/c/dam/en/us/td/docs/conferencing/ciscoMeetingServer/Reference_Guides/Version-3-5/Cisco-Meeting-Server-CDR-Guide-3-5.pdf)
+Cisco Meeting Server Call Detail Records Guide.
+#### [Configure Cisco Meeting Server branding](https://www.cisco.com/c/dam/en/us/td/docs/conferencing/ciscoMeetingServer/Customisation/Version-3-5/Cisco-Meeting-Server-3-5-Customization-Guidelines.pdf)
+A guide for configuring Cisco meeting sever branding. Includes the set up for seperate branding web servers
+#### [CSS styling from Codestart](https://www.codersarts.com/post/html-forms-templates-using-css)
+Great styling examples
 
 ----
