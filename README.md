@@ -22,7 +22,7 @@ Open a terminal or command prompt.
 Navigate to the directory where you want to clone the repository.
 Use the git clone command followed by the repository URL. For example:
 ```sh
-git clone https://github.com/username/repository.git
+git clone https://github.com/RodgersRepo/CMS_Ad_Hoc_Rename.git
 ```
 Open the Project in Visual Studio Code:
 
