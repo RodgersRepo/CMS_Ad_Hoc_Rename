@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<!--
+CSS from
+https://www.codersarts.com/post/html-forms-templates-using-css-->
+<html>
+
+<head>
+	<title>CMS Ad Hoc Rename Web App</title>
+	<style>
+		body {
+			font-family: Arial, Helvetica, sans-serif;
+			margin-left: 25%;
+			margin-right: 25%;
+			border: 1px solid #000000;
+			margin-bottom: 5px;
+			padding: 0px 15px 0 15px;
+			word-wrap: break-word;
+			/* Ensures long words break to fit within the container */
+		}
+
+		input[type=text],
+		input[type=password] {
+			width: 97%;
+			padding: 10px;
+			margin: 5px 0 22px 0;
+			display: inline-block;
+			border: none;
+			background: #F5F5F5;
+		}
+
+		hr {
+			border: 1px solid #e6e6e6;
+			margin-bottom: 5px;
+		}
+
+		.registerbutton {
+			background-color: #29a329;
+			color: white;
+			padding: 15px 20px;
+			margin: 10px 0px;
+			border: none;
+			border-radius: 38px;
+			cursor: pointer;
+			width: 100%;
+			font-weight: bold;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Logging Confirmation Page</h1>
+	<p>If logging is set FALSE then no logs will be written</p>
+	<p>If logging is set TRUE logs will be written</p>
+	<p>logging has been set to: <strong>{{turnOnLog}}</strong></p>
+	<hr>
+	<h2>Location of log file</h2>
+	<strong>{{logFile}}</strong>
+	<p>If you want to monitor this file for new entries try this powershell command from a powershell prompt:
+		<br><code>Get-Content -Path {{logFile}} -Tail 5 -Wait</code>
+		<br><br><strong>Please note</strong> The text log name will have todays date on the end i.e.
+		<strong>cmsRenameLogYYYYMMDD.txt</strong>
+	</p>
+	
+</body>
+
+</html>

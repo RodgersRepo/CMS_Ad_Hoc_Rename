@@ -1,0 +1,10 @@
+2024-12-19 17:07:19.249 +00:00 [INF] Logging has been set to: true. True means logging is on. False is no logging
+2024-12-19 17:08:04.027 +00:00 [INF] A CMS coSpace string named 123456001036030022 received. accompaning GUID is 6a052227-2822-474f-9409-a198edb49abe.
+2024-12-19 17:08:04.101 +00:00 [INF] An encrypted password has been set. This will be used to log into CMS
+2024-12-19 17:08:04.399 +00:00 [INF] status code OK 
+2024-12-19 17:08:04.542 +00:00 [INF] A CMS coSpace string named notFound received. accompaning GUID is notFound.
+2024-12-19 17:08:04.655 +00:00 [INF] A CMS coSpace string named notFound received. accompaning GUID is notFound.
+2024-12-19 17:26:22.422 +00:00 [INF] Logging has been set to: true. True means logging is on. False is no logging
+2024-12-19 17:27:07.763 +00:00 [INF] A CMS coSpace string named 123456001036030025 received. accompaning GUID is 7638b173-9d0c-4c86-ae33-84b3d2c8b8ec.
+2024-12-19 17:27:07.799 +00:00 [INF] An encrypted password has been set. This will be used to log into CMS
+2024-12-19 17:27:08.357 +00:00 [INF] status code OK 

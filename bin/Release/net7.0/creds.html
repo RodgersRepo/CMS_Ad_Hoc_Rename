@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<!--
+CSS from
+https://www.codersarts.com/post/html-forms-templates-using-css-->
+<html>
+
+<head>
+	<title>CMS Ad Hoc Rename Web App</title>
+	<style>
+		body {
+			font-family: Arial, Helvetica, sans-serif;
+			margin-left: 25%;
+			margin-right: 25%;
+			border: 1px solid #000000;
+			margin-bottom: 5px;
+			padding: 0px 15px 0 15px;
+			word-wrap: break-word;
+			/* Ensures long words break to fit within the container */
+		}
+
+		input[type=text],
+		input[type=password] {
+			width: 97%;
+			padding: 10px;
+			margin: 5px 0 22px 0;
+			display: inline-block;
+			border: none;
+			background: #F5F5F5;
+		}
+
+		hr {
+			border: 1px solid #e6e6e6;
+			margin-bottom: 5px;
+		}
+
+		.registerbutton {
+			background-color: #29a329;
+			color: white;
+			padding: 15px 20px;
+			margin: 10px 0px;
+			border: none;
+			border-radius: 38px;
+			cursor: pointer;
+			width: 100%;
+			font-weight: bold;
+		}
+	</style>
+</head>
+
+<body>
+	<!--instruct user that a CSV file must be created called creds.csv-->
+	<h1>Credentials for server {{computerName}}</h1>
+	<p>This web application will use the following credentials to log into the CMS server. This 
+	encrypted password will only work on the {{computerName}} server.	
+	</p>
+	<p>This apps CMS username:
+		<br><strong>{{userName}}</strong>
+	</p>
+	<p>the encrypted password will be:
+		<br><strong>{{encryptedString}}</strong>
+	</p>
+	<hr>
+
+	<h2>What to do next</h2>
+	<p>These credentials must be pasted into a CSV file located here:</p>
+	<p><strong>{{filePath}}creds.csv</strong></p>
+	<p>The headings within creds.csv must be as follows. Any deviation from this and the insecure defaults will be
+		used!!!
+		<br><br><strong>userName,encPassword,adhocSpaceName,confBridgePrefix</strong>
+	</p>
+
+	<hr>
+	<h2>Headings in the creds.csv file</h2>
+	<ul>
+		<li><strong>userName</strong> - The username this application will use to log into CMS. From the Credentials section above</li>
+        <li><strong>encPassword</strong> - An encrytpted password string used by this application to log into CMS. From the Credentials section above</li>
+        <li><strong>adhocSpaceName</strong> - A text string that will replace the long numeric string space name</li>
+        <li><strong>confBridgePrefix</strong> - A prefix you have configured on CUCM conference bridge configuration. Any conference with this prefix will have its name change to whatever you have set for <strong>adhocSpaceName</strong>. 
+		see the <strong>Configuring CUCM for this web app</strong> on the main page</li>
+	</ul>            
+
+</body>
+
+</html>

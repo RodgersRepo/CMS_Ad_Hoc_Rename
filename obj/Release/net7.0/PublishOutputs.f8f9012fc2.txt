@@ -1,0 +1,13 @@
+C:\Users\USER1\Documents\VSCode\CMSRename\publish\CMSRename.exe
+C:\Users\USER1\Documents\VSCode\CMSRename\publish\appsettings.Development.json
+C:\Users\USER1\Documents\VSCode\CMSRename\publish\appsettings.json
+C:\Users\USER1\Documents\VSCode\CMSRename\publish\index.html
+C:\Users\USER1\Documents\VSCode\CMSRename\publish\creds.html
+C:\Users\USER1\Documents\VSCode\CMSRename\publish\logging.html
+C:\Users\USER1\Documents\VSCode\CMSRename\publish\private\creds.csv
+C:\Users\USER1\Documents\VSCode\CMSRename\publish\CMSRename.dll
+C:\Users\USER1\Documents\VSCode\CMSRename\publish\CMSRename.deps.json
+C:\Users\USER1\Documents\VSCode\CMSRename\publish\CMSRename.runtimeconfig.json
+C:\Users\USER1\Documents\VSCode\CMSRename\publish\CMSRename.pdb
+C:\Users\USER1\Documents\VSCode\CMSRename\publish\Serilog.dll
+C:\Users\USER1\Documents\VSCode\CMSRename\publish\Serilog.Sinks.File.dll

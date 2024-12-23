@@ -1,0 +1,7 @@
+2024-12-17 14:38:31.168 +00:00 [INF] Logging has been set to: true. True means logging is on. False is no logging
+2024-12-17 14:39:26.607 +00:00 [INF] Logging has been set to: true. True means logging is on. False is no logging
+2024-12-17 14:40:53.661 +00:00 [INF] A CMS coSpace string named 123456001036030025 has been received. It begins with the correct configured prefix. Here is the name that the space will change to: nuc Ad hoc conference
+2024-12-17 14:40:53.661 +00:00 [INF] GUID for this new space 0705f5ef-8445-4150-acb5-0ba55e5828d5. Sending name change to 10.10.1.5
+2024-12-17 14:40:53.701 +00:00 [INF] An encrypted password has been set. This will be used to log into CMS
+2024-12-17 14:40:54.020 +00:00 [INF] HTTP PUT request sent. Response follows:
+2024-12-17 14:40:54.020 +00:00 [INF] HTTP PUT status code OK 

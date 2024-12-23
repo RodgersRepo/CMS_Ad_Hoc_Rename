@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<!--
+CSS from
+https://www.codersarts.com/post/html-forms-templates-using-css-->
+<html>
+
+<head>
+    <title>CMS Ad Hoc Rename Web App</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            margin-left: 25%;
+            margin-right: 25%;
+            border: 1px solid #000000;
+            margin-bottom: 5px;
+            padding: 0px 15px 0 15px;
+            word-wrap: break-word;
+            /* Ensures long words break to fit within the container */
+        }
+
+        input[type=text],
+        input[type=password] {
+            width: 97%;
+            padding: 10px;
+            margin: 5px 0 22px 0;
+            display: inline-block;
+            border: none;
+            background: #F5F5F5;
+        }
+
+        hr {
+            border: 1px solid #e6e6e6;
+            margin-bottom: 5px;
+        }
+
+        .registerbutton {
+            background-color: #29a329;
+            color: white;
+            padding: 15px 20px;
+            margin: 10px 0px;
+            border: none;
+            border-radius: 38px;
+            cursor: pointer;
+            width: 100%;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 id="readme-for-the-cmsrename-app">README For the cmsrename web app</h1>
+    <p>An ASP.NET Core basic web application,using minimal APIs, that changes Ad hoc conference space names.</p>
+    <hr>
+
+    <h2 id="table-of-contents">Table of Contents</h2>
+    <ul>
+        <li><a href="#creds">Enter the username and password this web app will use to log into the CMS API</a></li>
+        <li><a href="#loggingSet">Turn on/off logging to a text file</a></li>
+        <li><a href="#usage">Check the web app is running</a></li>
+        <li><a href="#cucm">Configuring CUCM for this web app</a></li>
+        <li><a href="#cms">Configuring CMS to use his web app</a></li>
+        <li><a href="#installation">Installation</a></li>
+    </ul>
+    <hr>
+
+    <h2 id="creds">Credentials for this web app</h2>
+    <p>Please enter the username and password this web app is to use to access the CMS API.</p>
+    <!--By using the attribute "required" in the input tag
+    the form will not post untill both text boxes have text in them
+    meaning I dont need to do much server side checking for the existance 
+    of text-->
+    <form action="/creds" method="post">
+        <div>
+            <label for="uname"><b>Username</b></label>
+            <input type="text" placeholder="Enter Username" name="uname" required>
+
+            <label for="psw"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="psw" required>
+
+            <button type="submit" class="registerbutton">Submit Credentials</button>
+        </div>
+    </form>
+    <hr>
+
+    <h2 id="loggingSet">Turn on or off logging to text file</h2>
+    <p>By default logging is off. Click the radio button to turn on logging then click Submit. To turn off logging<br>
+        click the off radio button and click submit. You cannot be sure logging is off untill you see the confirmation
+        page<br>
+        that loads afer you press submit!!</p>
+    <form action="/logging" method="post">
+        <label>
+            <input type="radio" name="option" value="true" required> Turn on logging
+        </label>
+        <br>
+        <label>
+            <input type="radio" name="option" value="false" required> Turn off logging
+        </label>
+        <br>
+        <button type="submit" class="registerbutton">Submit Logging Request</button>
+    </form>
+    <hr>
+
+    <h2 id="usage">Check the web app is running</h2>
+    <p>To test the web site is running an HTTP GET can be carried out using curl or just browse to the following:</p>
+    <pre><code class="lang-sh">request:
+http:<span class="hljs-comment">//&lt;SERVER URL&gt;</span>
+
+responce:
+&lt;SERVER <span class="hljs-keyword">NAME</span>&gt; <span class="hljs-keyword">cmsrename app is</span> responding <span class="hljs-keyword">to</span> GET requests
+</code></pre>
+    <hr>
+
+    <h2 id="cucm">Configuring CUCM for this web app</h2>
+    <p>Configure a CUCM to CMS Ad hoc conference bridge using the Cisco document</p>
+    <a href="https://www.cisco.com/c/en/us/support/docs/conferencing/meeting-server/213820-configure-cisco-meeting-server-and-cucm.html">
+        Configure Cisco Meeting Server and CUCM Ad hoc Conferences</a>
+    <p>Log into CUCM administration, navigate to <strong>Media Resources > Conference Bridge</strong>.
+    Click the hyperlink for the name you have configured for Ad hoc conferencing. In the <strong>Conference Bridge Prefix </strong> 
+    text box type the text string that will uniquely identify Ad hoc conferences. For example <strong>123456</strong>. 
+    Click <strong>Save</strong> then <strong>Apply Config</strong></p>
+    <hr>
+
+    <h2 id="cms">Configuring CMS to use this web app</h2>
+    <p>Log into your CMS server, then navigate to <strong>Configuration > CDR settings</strong>. In one of the
+        <strong>Receiver URI</strong> text boxes type the following followed by <strong>Submit</strong>.
+    <pre><code class="lang-sh">
+       https:<span class="hljs-comment">//&lt;SERVER URL&gt;/cmsrename</span></code></pre>
+    cmsrename will only use https so please ensure your certificates are valid.</p>
+    <hr>
+
+    <h2 id="installation">Installation (compiling the source code)</h2>
+    <p>If you are seeing this page then you have already completed this section. Including instructions here for completeness.</p>
+    <p>Download and install .NET Core bundle onto the IIS server that you intend to deploy this app to from
+        <a href="https://dotnet.microsoft.com/permalink/dotnetcore-current-windows-runtime-bundle-installer">Microsoft</a>:
+    </p>
+    <ul>
+        <li>Run the installer on the IIS server</li>
+        <li>Restart the server or execute <code>net stop was /y</code> followed by <code>net start w3svc</code></li>
+        <li>On the IIS server, create a folder to contain the app&#39;s published folders and files called
+            &#39;cmsrename&#39;. In a following step, the folder&#39;s path is provided to IIS as the physical path to
+            the app. For more information on an app&#39;s deployment folder and file layout, see ASP.NET Core directory
+            structure</li>
+        <li>In IIS Manager, open the server&#39;s node in the Connections panel. Right-click the Sites/default web site
+            folder. Select Add Application from the contextual menu</li>
+        <li>Provide a Site alias and set the Physical path to the app&#39;s deployment folder that you created. Keep the
+            Application Pool at the default. Create the application by selecting OK</li>
+        <li>From the VSCode terminal publish the app to a folder. If the code is already compiled skip this command</li>
+    </ul>
+    <pre style="text-align: center"><code class="lang-sh">dotnet publish <span class="hljs-comment">--configuration Release</span>
+</code></pre>
+    <ul>
+        <li>Move the contents of the <code>bin/Release/{TARGET FRAMEWORK}/publish</code> folder to the IIS site folder
+            on the server, which is the site&#39;s Physical path in IIS Manager</li>
+        <li>Test by browsing to the site</li>
+    </ul>
+</body>
+
+</html>

@@ -1,0 +1,14 @@
+2024-12-23 12:16:46.294 +00:00 [INF] Logging has been set to: true. True means logging is on. False is no logging
+2024-12-23 12:17:18.254 +00:00 [INF] A CMS coSpace string named 123456001036030016 received. accompaning GUID is 76909186-82c4-419f-8baa-940fca057aa0.
+2024-12-23 12:17:18.288 +00:00 [INF] An encrypted password has been set. This will be used to log into CMS
+2024-12-23 12:17:18.557 +00:00 [INF] sending to https://10.10.1.5:443/api/v1/coSpaces/76909186-82c4-419f-8baa-940fca057aa0 with name=nuc Ad hoc conference
+2024-12-23 12:17:18.558 +00:00 [INF] status code OK 
+2024-12-23 12:20:05.411 +00:00 [INF] A CMS coSpace string named Meeting Space 85005 received. accompaning GUID is d5d154d7-2c6a-4505-8e05-9e1b09d01fed.
+2024-12-23 12:20:05.411 +00:00 [INF] A CMS coSpace string named Meeting Space 85005 has been received. It does not begin with the configured prefix and will be ignored.
+2024-12-23 12:35:03.805 +00:00 [INF] Logging has been set to: true. True means logging is on. False is no logging
+2024-12-23 12:35:32.196 +00:00 [INF] A CMS coSpace string named 123456001036030018 received. accompaning GUID is 63bf2581-d933-4de1-82c5-b57105504049.
+2024-12-23 12:35:32.206 +00:00 [INF] An encrypted password has been set. This will be used to log into CMS
+2024-12-23 12:35:32.534 +00:00 [INF] sending to https://10.10.1.5:443/api/v1/coSpaces/63bf2581-d933-4de1-82c5-b57105504049 with name=nuc Ad hoc conference
+2024-12-23 12:35:32.535 +00:00 [INF] status code OK 
+2024-12-23 12:37:19.262 +00:00 [INF] A CMS coSpace string named Meeting Space 85005 received. accompaning GUID is d5d154d7-2c6a-4505-8e05-9e1b09d01fed.
+2024-12-23 12:37:19.263 +00:00 [INF] Meeting Space 85005 received does not begin with the configured prefix and will be ignored.
