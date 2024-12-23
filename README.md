@@ -5,10 +5,13 @@ A dot net core minimal api application to change Ad hoc conference names on a Ci
 if you are using CMS for your ad hoc CUCM conferences you have probably seen touch devices such as the Navigator displaying the name of the conference as a numeric string. Figure 1 below demonstrates this.
 
 ![Figure 1 - Touch Device Ad Hoc screen shot](/./AdHocScreenShot.png "CUCM Active calls script screenshot")
+Figure 1 - Touch Device Ad Hoc screen shot
 
 This web application will change that string to a string of your choosing. It requires a seperate microsoft IIS server to host the apllication. If you are already using IIS to host the [CMS branding files](https://www.cisco.com/c/dam/en/us/td/docs/conferencing/ciscoMeetingServer/Customisation/Version-3-5/Cisco-Meeting-Server-3-5-Customization-Guidelines.pdf) files this could be used.
 
-The solution was tested in a lab enviroment connected as paer the diagram below. Whenever a ad hoc conference is requested the CMS server immeadeatly sends the call detail record to the IIS server. The server detcts this and returns a REST responces to alter the ad hoc space name. To get this to work please read the installation section and replace the defaults in the **Private/creds.csv** file with values of your chosing. A secure password can also be used, see installation for this also. 
+The solution was tested in a lab enviroment connected as per figure 2 below. Whenever a ad hoc conference is requested the CMS server immeadeatly sends the call detail record to the IIS server. The server detcts this and returns a REST responces to alter the ad hoc space name. To get this to work please read the installation section and replace the defaults in the **private/creds.csv** file with values of your chosing. A secure password can also be used, see installation for this also. 
+![Figure 2 - Example connectivity to test this application](/./cmscucmnet.png "CUCM Active calls script screenshot")
+Figure 2 - Example connectivity to test this application
 
 ## Installation
 ### To VSCODE
