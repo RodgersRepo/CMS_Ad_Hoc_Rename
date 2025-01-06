@@ -1,4 +1,5 @@
 # CMS Ad hoc rename
+[![published](https://static.production.devnetcloud.com/codeexchange/assets/images/devnet-published.svg)](https://developer.cisco.com.mcas.ms/codeexchange/github/repo/RodgersRepo/CMS_Ad_Hoc_Rename)
 
 A dot net core minimal api application to change Ad hoc conference names on a Cisco Meeting Server (CMS). For deployments where CUCM (Cisco Unified Communications Manager) creates the conference on CMS.
 
